@@ -23,15 +23,13 @@ Route::get('buildingA', function () {
     return view('buildingA');
 });
 
-Route::get('roomA1', 'TestController@index');
+Route::get('roomA1', 'RoomController@index');
 
 Route::get('switchView', function () {
     return view('switchView');
 });
 
-Route::get('professorInput', function () {
-    return view('professorInput');
-});
+Route::get('professorInput','professorInputController@index');
 
 Route::get('test', function () {
     return view('test');
@@ -44,3 +42,6 @@ Route::get('new', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('Department/{id}','RoomController@getDapartement');
+Route::post('inputData','RoomController@input');
+Route::get('faculty','RoomController@getFaculty');

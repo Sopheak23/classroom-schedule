@@ -1,180 +1,240 @@
-@extends('layouts.dashboard')
+@extends('layouts.app') @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+                    <div id="container" style="height:100%;">
+                        <header>
+                            <h2>Room A1</h2>
+                        </header>
+                        <table class="table table-bordered">
+                            <thead>
+                                <th id="time" colspan="8">Morning</th>
+                                <tr>
+                                    @if (count($days)>0)
+                                        @foreach ($days as $day)
+                                        <th scope="col">{{$day->day_name}}</th>
+                                        @endforeach
+                                    @endif
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">7:00-8:00</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <th id="time" colspan="8">Noon</th>
+                                <tr>
+                                    <th scope="row">1:00-2:00</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <th id="time" colspan="8">Evening</th>
+                                <tr>
+                                    <th scope="row">6:00-7:00</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="myModal" class="popup">
 
-@section('content-dashboard')
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="name" class="form-control" id="name" placeholder="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputDepartemnt">Faculty</label>
+                                    <select class="form-control" id="faculty">
+                                       
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fac">Department</label>
+                                    <select class="form-control" id="department">
 
-<div class="card-header text-center"><h1>Room A1</h1></div>
-<div class="card-body">
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
-    <div id="container" style="height:100%;">
-        <table id="customers">
-            <tr>
-            <th>Time</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            </tr>
-            <tr>
-            <td colspan="7" bgcolor="#c1c1c1" align="middle">Morning</td>
-            </tr>
-            <tr>
-            <td>7:00-8:00</td>
-            <td onclick="openForm()"></td>
-            <td onclick="openForm()"></td>
-            <td onclick="openForm()"></td>
-            <td onclick="openForm()"></td>
-            <td onclick="openForm()"></td>
-            <td onclick="openForm()"></td>
-            </tr>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fac">Subject</label>
+                                    <select class="form-control" id="Subject">
 
-            <div class="form-popup" id="myForm">
-                <form action="/action_page.php" class="form-container">
-                <h1>Input Subject</h1>
-
-                <label><b>Subject</b></label>
-                <input type="text" placeholder="Enter Subject" name="email" required>
-
-                <label><b>Department</b></label>
-                <input type="password" placeholder="Enter Department" name="psw" required>
-
-                <button type="submit" class="btn" >Save</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                </form>
+                                    </select>
+                                </div>
+                                <button type="submit" id="submit" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <script>
-            function openForm() {
-                document.getElementById("myForm").style.display = "block";
-            }
-
-            function closeForm() {
-                document.getElementById("myForm").style.display = "none";
-            }
-            </script>
-
-            @foreach($data as $item)
-            <tr>
-            <td>8:00-9:00</td>
-            <td><?php echo $item->building_name;?></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>9:00-10:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>10:00-11:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>11:00-12:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td colspan="7" bgcolor="#c1c1c1" align="middle">Noon</td>
-            </tr>
-            <tr>
-            <td>13:00-14:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>14:00-15:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>15:00-16:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>16:00-17:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td colspan="7" bgcolor="#c1c1c1" align="middle">Night</td>
-            </tr>
-            <tr>
-            <td>17:00-18:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>18:00-19:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>19:00-20:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>20:00-21:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            @endforeach
-            </tr>
-        </table>
+        </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        var td = '';
+        $.ajaxSetup({
+
+            headers: {
+
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+            }
+
+        });
+        // submit
+        $('#submit').click(function() {
+            var facultyID = $('#faculty').val();
+            var fepartmentID = $('#department').val();
+            $.ajax({
+                type: "POST",
+                url: "inputData",
+                data: {
+                    fid: facultyID,
+                    did: fepartmentID
+                },
+                success: function(response) {
+                    alert(response);
+                }
+            });
+        });
+        $('#faculty').on('change', function() {
+            $.ajax({
+                type: "GET",
+                url: 'Department/{id}',
+                data: {
+                    id: $(this).val()
+                },
+                success: function(response) {
+                    $('#department').html(response);
+                }
+            });
+        });
+        var modal = document.getElementById('myModal');
+        var span = document.getElementsByClassName("close")[0];
+        $('td').click(function() {
+            td = $(this);
+            $.ajax({
+                type: "GET",
+                url: "faculty",
+                success: function (response) {
+                    $('#faculty').html(response);
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: 'Department/{id}',
+                data: {
+                    id: 1
+                },
+                success: function(response) {
+                    $('#department').html(response);
+                }
+            });
+            modal.style.display = "block";
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+</script>
 @endsection

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,181 +7,108 @@
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
                     <div id="container" style="height:100%;">
                         <header>
-                          <h2>Professor's Input</h2>
+                            <h2>Professor's Input</h2>
                         </header>
-                        <table id="customers">
-                            <tr>
-                            <th>Time</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
-                            </tr>
-                            <tr>
-                            <td colspan="7" bgcolor="#c1c1c1" align="middle">Morning</td>
-                            </tr>
-                            <tr>
-                            <td>7:00-8:00</td>
-                            <td onclick="openForm()"></td>
-                            <td onclick="openForm()"></td>
-                            <td onclick="openForm()"></td>
-                            <td onclick="openForm()"></td>
-                            <td onclick="openForm()"></td>
-                            <td onclick="openForm()"></td>
-                            </tr>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Monday</th>
+                                    <th scope="col">Tuesday</th>
+                                    <th scope="col">Wednesday</th>
+                                    <th scope="col">Thurday</th>
+                                    <th scope="col">Friday</th>
+                                    <th scope="col">SaturDay</th>
+                                    <th scope="col">Sunday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="myModal" class="popup">
 
-                            <div class="form-popup" id="myForm">
-                                <form action="/action_page.php" class="form-container">
-                                <h1>Input Subject</h1>
-
-                                <label><b>Subject</b></label>
-                                <input type="text" placeholder="Enter Subject" name="email" required>
-
-                                <label><b>Department</b></label>
-                                <input type="text" placeholder="Enter Department" name="psw" required>
-
-                                <button type="submit" class="btn">Save</button>
-                                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>
-
-                            <script>
-                            function openForm() {
-                                document.getElementById("myForm").style.display = "block";
-                            }
-
-                            function closeForm() {
-                                document.getElementById("myForm").style.display = "none";
-                            }
-                            </script>
-
-                            <tr>
-                            <td>8:00-9:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>9:00-10:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>10:00-11:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>11:00-12:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td colspan="7" bgcolor="#c1c1c1" align="middle">Noon</td>
-                            </tr>
-                            <tr>
-                            <td>13:00-14:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>14:00-15:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>15:00-16:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>16:00-17:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td colspan="7" bgcolor="#c1c1c1" align="middle">Night</td>
-                            </tr>
-                            <tr>
-                            <td>17:00-18:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>18:00-19:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>19:00-20:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>20:00-21:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                        </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        var modal = document.getElementById('myModal');
+        var span = document.getElementsByClassName("close")[0];
+        $('td').click(function () { 
+          modal.style.display = "block";
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+</script>
 @endsection
